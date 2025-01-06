@@ -5,6 +5,7 @@ signal brick_destroyed(brick)
 var health: int = 1
 var stats_manager
 @onready var health_label = $Health
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	update_appearance()
@@ -17,7 +18,7 @@ func on_ball_hit(damage_amount):
 	health -= damage_amount
 	if health <= 0:
 		emit_signal("brick_destroyed", self)
-		queue_free()
+		animation_player.play("brick_destroyed")
 	else:
 		update_appearance()
 
