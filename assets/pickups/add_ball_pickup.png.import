@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq1bmbo0qtugn"
-path="res://.godot/imported/Block Yellow.png-04c0021d39c2accf9c48b62b517d34d3.ctex"
+uid="uid://m12mayidajgn"
+path="res://.godot/imported/add_ball_pickup.png-d32f2caf1ca34a14843e4f25bd105c67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Block Yellow.png"
-dest_files=["res://.godot/imported/Block Yellow.png-04c0021d39c2accf9c48b62b517d34d3.ctex"]
+source_file="res://assets/pickups/add_ball_pickup.png"
+dest_files=["res://.godot/imported/add_ball_pickup.png-d32f2caf1ca34a14843e4f25bd105c67.ctex"]
 
 [params]
 

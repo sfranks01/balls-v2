@@ -1,17 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://v6k8mkeqkx0l"]
+[gd_scene load_steps=9 format=3 uid="uid://v6k8mkeqkx0l"]
 
 [ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_t2a51"]
 [ext_resource type="Script" path="res://scripts/stats_manager.gd" id="2_d0667"]
 [ext_resource type="Script" path="res://scripts/wall_controller.gd" id="3_4o5do"]
-[ext_resource type="Script" path="res://scenes/ball_controller.gd" id="4_7qlna"]
-[ext_resource type="Script" path="res://scenes/aim_line.gd" id="5_t2q7q"]
-[ext_resource type="Script" path="res://scenes/brick_controller.gd" id="6_vktwl"]
+[ext_resource type="Script" path="res://scripts/ball_controller.gd" id="4_7qlna"]
+[ext_resource type="Script" path="res://scripts/aim_line.gd" id="5_t2q7q"]
+[ext_resource type="Script" path="res://scripts/brick_controller.gd" id="6_vktwl"]
 [ext_resource type="PackedScene" uid="uid://di6xlxce8cmku" path="res://scenes/brick.tscn" id="7_dcqjs"]
+[ext_resource type="PackedScene" uid="uid://cc0cc84arxfsr" path="res://scenes/add_ball_pickup.tscn" id="8_cdlf4"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_t2a51")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(195, 424)
+
 [node name="StatsManager" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_d0667")
 
 [node name="ScoreLabel" type="Label" parent="StatsManager"]
@@ -36,7 +41,8 @@ script = ExtResource("6_vktwl")
 visible = false
 position = Vector2(506, 29)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(195, 424)
+[node name="AddBallPickup" parent="BrickController" instance=ExtResource("8_cdlf4")]
+visible = false
+position = Vector2(174, 54)
 
 [connection signal="game_over" from="BrickController" to="." method="_on_brick_controller_game_over"]

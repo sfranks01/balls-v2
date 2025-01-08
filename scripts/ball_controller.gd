@@ -14,12 +14,22 @@ var preview_ball = null
 var is_launching: bool = false
 var last_ball_x_position: float = -1  # Store last ball's x position
 var launch_position: Vector2  # Renamed from initial_position to be clearer
+@onready var launch_area_visual = ColorRect.new()
+var can_launch = true 
 
 func _ready():
 	# Set initial launch position only for the first time
 	launch_position = Vector2(393/2, 852 - 25)
 	last_ball_x_position = launch_position.x  # Initialize with center position
 	create_preview_ball()
+	#
+	#launch_area_visual.color = Color(0, 1, 0, 0.2)  # Semi-transparent green
+	## Position and size (making it the bottom half of the screen)
+	#var viewport_size = get_viewport_rect().size
+	#launch_area_visual.position = Vector2(0, viewport_size.y / 2)
+	#launch_area_visual.size = Vector2(viewport_size.x, viewport_size.y / 2)
+	#
+	#add_child(launch_area_visual)
 
 func create_preview_ball():
 	preview_ball = BALL_SCENE.instantiate()
@@ -36,6 +46,7 @@ func start_launch_sequence(direction: Vector2):
 		
 	is_launching = true
 	preview_ball.hide()
+	#launch_area_visual.hide()
 	
 	var launch_position = preview_ball.position
 	

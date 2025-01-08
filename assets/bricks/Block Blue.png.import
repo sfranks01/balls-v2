@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwe1udy0tveyk"
-path="res://.godot/imported/Block Pink.png-c1d189f71bbb4da7cef0f62d95809966.ctex"
+uid="uid://baxmxqb3h7au"
+path="res://.godot/imported/Block Blue.png-72fa6c5b03c0293edf5e8274a42694b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Block Pink.png"
-dest_files=["res://.godot/imported/Block Pink.png-c1d189f71bbb4da7cef0f62d95809966.ctex"]
+source_file="res://assets/bricks/Block Blue.png"
+dest_files=["res://.godot/imported/Block Blue.png-72fa6c5b03c0293edf5e8274a42694b4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cakxf8knngj37"
-path="res://.godot/imported/Ball Gray.png-e37a9e0777d1536eef3f34ca5e22c381.ctex"
+uid="uid://l8t7yoi22de1"
+path="res://.godot/imported/Block Orange.png-dfe28ccb8124cc173a3f218579b2bd99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ball Gray.png"
-dest_files=["res://.godot/imported/Ball Gray.png-e37a9e0777d1536eef3f34ca5e22c381.ctex"]
+source_file="res://assets/bricks/Block Orange.png"
+dest_files=["res://.godot/imported/Block Orange.png-dfe28ccb8124cc173a3f218579b2bd99.ctex"]
 
 [params]
 

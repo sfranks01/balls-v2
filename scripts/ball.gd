@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 signal ball_lost(x_position: float)  # Modified to pass the x position
 
-const SPEED: float = 800.0
+var SPEED: float = 800.0
 const COLLISION_BOUNCE: float = 1.0
 var window_size: Vector2 = DisplayServer.window_get_size()
 

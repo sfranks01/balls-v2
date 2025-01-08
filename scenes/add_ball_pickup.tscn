@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc0cc84arxfsr"]
+
+[ext_resource type="Script" path="res://scripts/add_ball_pickup.gd" id="1_64xqt"]
+[ext_resource type="Texture2D" uid="uid://m12mayidajgn" path="res://assets/pickups/add_ball_pickup.png" id="1_icvb8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vsgun"]
+radius = 60.407
+
+[node name="add_ball_pickup" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+collision_mask = 2
+script = ExtResource("1_64xqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vsgun")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_icvb8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

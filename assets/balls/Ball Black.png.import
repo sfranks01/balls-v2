@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7yulku4kl0an"
-path="res://.godot/imported/Block Gray.png-bd7d24aa9ca6a9a44c037568a2c2ac07.ctex"
+uid="uid://btk8u1xpx5daa"
+path="res://.godot/imported/Ball Black.png-6f0336d6baf8a3b9c173d2d76fd4ceba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Block Gray.png"
-dest_files=["res://.godot/imported/Block Gray.png-bd7d24aa9ca6a9a44c037568a2c2ac07.ctex"]
+source_file="res://assets/balls/Ball Black.png"
+dest_files=["res://.godot/imported/Ball Black.png-6f0336d6baf8a3b9c173d2d76fd4ceba.ctex"]
 
 [params]
 

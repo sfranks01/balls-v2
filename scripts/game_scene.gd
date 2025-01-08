@@ -13,6 +13,7 @@ var aim_direction = Vector2.ZERO
 func _ready():
 	stats_manager.start_game()
 	ball_controller.connect("all_balls_lost", _on_all_balls_lost)
+	#$BrickController/AddBallPickup.ball_added.connect($StatsManager.on_ball_added)
 
 # Input handling for aiming and launching
 func _input(event):

@@ -38,10 +38,15 @@ func start_game():
 
 func advance_level():
 	current_level += 1
-	ball_count += 1
 	score_label.text = "Score: " + str(current_level)
 	emit_signal("level_changed", current_level)
 	emit_signal("balls_changed", ball_count)
+
+func add_ball(amount):
+	# Increase ball count
+	ball_count += amount
+	print(ball_count)
+	# Update UI or other relevant game state
 
 # StatsManager.gd
 func get_brick_health() -> int:

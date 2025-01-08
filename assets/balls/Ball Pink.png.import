@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2ar45sjhe4ww"
-path="res://.godot/imported/Ball Pink.png-5c106c59d23aaead7c51dbd4b31a14ee.ctex"
+path="res://.godot/imported/Ball Pink.png-c323f04d3fd73984b5eadc20d21cb80e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ball Pink.png"
-dest_files=["res://.godot/imported/Ball Pink.png-5c106c59d23aaead7c51dbd4b31a14ee.ctex"]
+source_file="res://assets/balls/Ball Pink.png"
+dest_files=["res://.godot/imported/Ball Pink.png-c323f04d3fd73984b5eadc20d21cb80e.ctex"]
 
 [params]
 
