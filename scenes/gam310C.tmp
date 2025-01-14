@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://v6k8mkeqkx0l"]
+
+[ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_t2a51"]
+[ext_resource type="Script" path="res://scripts/stats_manager.gd" id="2_d0667"]
+[ext_resource type="Script" path="res://scripts/wall_controller.gd" id="3_4o5do"]
+[ext_resource type="Script" path="res://scripts/ball_controller.gd" id="4_7qlna"]
+[ext_resource type="Script" path="res://scenes/launch_zone.gd" id="5_71lpv"]
+[ext_resource type="Script" path="res://scripts/aim_line.gd" id="5_t2q7q"]
+[ext_resource type="Script" path="res://scripts/brick_controller.gd" id="6_vktwl"]
+[ext_resource type="PackedScene" uid="uid://di6xlxce8cmku" path="res://scenes/brick.tscn" id="7_dcqjs"]
+[ext_resource type="PackedScene" uid="uid://cc0cc84arxfsr" path="res://scenes/add_ball_pickup.tscn" id="8_cdlf4"]
+[ext_resource type="AudioStream" uid="uid://0g4bbhfrxf1i" path="res://assets/sounds/background_chord.wav" id="9_xo28c"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_t2a51")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(200, 423)
+
+[node name="StatsManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_d0667")
+
+[node name="ScoreLabel" type="Label" parent="StatsManager"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: 5"
+
+[node name="WallController" type="Node2D" parent="."]
+script = ExtResource("3_4o5do")
+
+[node name="BallController" type="Node2D" parent="."]
+script = ExtResource("4_7qlna")
+
+[node name="LaunchZone" type="Area2D" parent="BallController"]
+script = ExtResource("5_71lpv")
+
+[node name="AimLine" type="Line2D" parent="."]
+width = 3.0
+script = ExtResource("5_t2q7q")
+
+[node name="BrickController" type="Node2D" parent="."]
+script = ExtResource("6_vktwl")
+
+[node name="Brick" parent="BrickController" instance=ExtResource("7_dcqjs")]
+visible = false
+position = Vector2(506, 29)
+
+[node name="AddBallPickup" parent="BrickController" instance=ExtResource("8_cdlf4")]
+visible = false
+position = Vector2(174, 54)
+
+[node name="BackgroundChord" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_xo28c")
+
+[connection signal="game_over" from="BrickController" to="." method="_on_brick_controller_game_over"]

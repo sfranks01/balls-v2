@@ -7,6 +7,8 @@ const BALL_SCENE = preload("res://scenes/Ball.tscn")
 const LAUNCH_DELAY = 0.1
 
 @onready var stats_manager = get_node("../StatsManager")
+@onready var launch_zone: Area2D = $LaunchZone
+
 
 var initial_position: Vector2
 var active_balls: int = 0
@@ -14,22 +16,27 @@ var preview_ball = null
 var is_launching: bool = false
 var last_ball_x_position: float = -1  # Store last ball's x position
 var launch_position: Vector2  # Renamed from initial_position to be clearer
-#@onready var launch_area_visual = ColorRect.new()
-#var can_launch = true 
 
+
+# BallController.gd
 func _ready():
-	# Set initial launch position only for the first time
-	launch_position = Vector2(393/2, 852 - 25)
-	last_ball_x_position = launch_position.x  # Initialize with center position
+	# Set initial launch position based on viewport size
+	var viewport_size = get_viewport_rect().size
+	launch_position = Vector2(
+		viewport_size.x / 2,  # Center horizontally
+		viewport_size.y - 25  # 25 pixels from bottom
+	)
+	last_ball_x_position = launch_position.x
 	create_preview_ball()
-	#
-	#launch_area_visual.color = Color(0, 1, 0, 0.2)  # Semi-transparent green
-	## Position and size (making it the bottom half of the screen)
-	#var viewport_size = get_viewport_rect().size
-	#launch_area_visual.position = Vector2(0, viewport_size.y / 2)
-	#launch_area_visual.size = Vector2(viewport_size.x, viewport_size.y / 2)
-	#
-	#add_child(launch_area_visual)
+	
+
+func _physics_process(delta):
+	var viewport_size = get_viewport_rect().size
+	if position.y > viewport_size.y + 20:  # Screen height + buffer
+		var controller = get_parent()
+		controller.last_ball_x_position = position.x
+		emit_signal("ball_lost")
+		queue_free()
 
 func create_preview_ball():
 	preview_ball = BALL_SCENE.instantiate()
@@ -46,7 +53,8 @@ func start_launch_sequence(direction: Vector2):
 		
 	is_launching = true
 	preview_ball.hide()
-	#launch_area_visual.hide()
+	launch_zone.hide()
+	
 	
 	var launch_position = preview_ball.position
 	
@@ -55,17 +63,6 @@ func start_launch_sequence(direction: Vector2):
 		await get_tree().create_timer(LAUNCH_DELAY).timeout
 	
 	is_launching = false
-	
-func _physics_process(delta):
-	# Existing movement code...
-
-	# Check if ball is below screen
-	if position.y > 852 + 20:  # iPhone 16 height + buffer
-		# Store x position in controller before destroying
-		var controller = get_parent()
-		controller.last_ball_x_position = position.x
-		emit_signal("ball_lost")
-		queue_free()
 
 
 func _on_ball_lost(exit_x_position: float):  # Modified to receive the x position
@@ -75,6 +72,7 @@ func _on_ball_lost(exit_x_position: float):  # Modified to receive the x positio
 		emit_signal("all_balls_lost")
 		preview_ball.position = Vector2(last_ball_x_position, launch_position.y)
 		preview_ball.show()
+		launch_zone.show()
 
 func launch_single_ball(direction: Vector2, pos: Vector2):
 	var new_ball = BALL_SCENE.instantiate()

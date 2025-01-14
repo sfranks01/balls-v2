@@ -6,32 +6,40 @@ extends Node2D
 @onready var aim_line = $AimLine
 @onready var brick_controller: Node2D = $BrickController
 @onready var music_player = $BackgroundChord
+@onready var launch_zone = $BallController/LaunchZone  # Add this line
 
 var is_aiming = false
 var aim_start_position = Vector2.ZERO
 var aim_direction = Vector2.ZERO
 
+
 func _ready():
 	stats_manager.start_game()
 	ball_controller.connect("all_balls_lost", _on_all_balls_lost)
-	#$BrickController/AddBallPickup.ball_added.connect($StatsManager.on_ball_added)
-	# Start the music if you want it to play immediately
-	#start_music()
 
-# Input handling for aiming and launching
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				# Start aiming
-				is_aiming = true
-				aim_start_position = event.position
+				# Check if click is within launch zone
+				var collision_shape = launch_zone.get_node("CollisionShape2D")
+				var shape_rect = Rect2(
+					collision_shape.global_position - collision_shape.shape.size / 2,
+					collision_shape.shape.size
+				)
+				
+				if shape_rect.has_point(event.position):
+					# Start aiming only if click is in launch zone
+					is_aiming = true
+					aim_start_position = event.position
 			else:
-				# Launch balls
-				is_aiming = false
-				aim_line.hide_line()
-				if aim_direction != Vector2.ZERO:
-					ball_controller.start_launch_sequence(aim_direction)
+				# Handle release
+				if is_aiming:
+					is_aiming = false
+					aim_line.hide_line()
+					if aim_direction != Vector2.ZERO:
+						ball_controller.start_launch_sequence(aim_direction)
+
 
 func _process(_delta):
 	if is_aiming:
