@@ -3,6 +3,10 @@ extends Node2D
 
 signal game_over
 
+@onready var stats_manager = get_node("../StatsManager")
+@onready var wall_controller: Node2D = $"../WallController"
+
+var add_ball_pickup_scene = preload("res://scenes/add_ball_pickup.tscn")
 const BRICK_SCENE = preload("res://scenes/Brick.tscn")
 const BRICKS_PER_ROW = 7
 const MAX_EMPTY_SPACES = 4
@@ -11,10 +15,9 @@ const BOTTOM_DANGER_Y = 800  # 852 - 25, matching ball launch height
 const START_Y = 100  # Where first row appears
 var BRICK_WIDTH = 45
 var BRICK_HEIGHT = 45
+
 	
-@onready var stats_manager = get_node("../StatsManager")
-@onready var wall_controller: Node2D = $"../WallController"
-var add_ball_pickup_scene = preload("res://scenes/add_ball_pickup.tscn")
+
 
 
 var rows = []  # Array of arrays, each inner array is a row of bricks

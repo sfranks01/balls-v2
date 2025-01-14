@@ -1,37 +1,35 @@
 # WallController.gd
 extends Node2D
 
-const WINDOW_WIDTH: int = 393
-const WINDOW_HEIGHT: int = 852
 const WALL_THICKNESS: int = 0
 
+
 func _ready():
-	setup_walls()
+	setup_walls()	
 
 func setup_walls():
+	var viewport_size = get_viewport().get_visible_rect().size
+	var window_width: int = viewport_size.x
+	var window_height: int = viewport_size.y
+	
 	# Left Wall
 	create_wall(
-		Vector2(0, WINDOW_HEIGHT/2), 
-		Vector2(WALL_THICKNESS, WINDOW_HEIGHT)
+		Vector2(0, window_height/2), 
+		Vector2(WALL_THICKNESS, window_height)
 	)
 	
 	# Right Wall
 	create_wall(
-		Vector2(WINDOW_WIDTH, WINDOW_HEIGHT/2),
-		Vector2(WALL_THICKNESS, WINDOW_HEIGHT)
+		Vector2(window_width, window_height/2),
+		Vector2(WALL_THICKNESS, window_height)
 	)
 	
 	# Top Wall
 	create_wall(
-		Vector2(WINDOW_WIDTH/2, 0),
-		Vector2(WINDOW_WIDTH, WALL_THICKNESS)
+		Vector2(window_width/2, 0),
+		Vector2(window_width, WALL_THICKNESS)
 	)
-
-func return_window_height():
-	return WINDOW_HEIGHT
-
-func return_window_width():
-	return WINDOW_WIDTH
+	return [window_width,window_height]
 
 func create_wall(pos: Vector2, size: Vector2):
 	var wall = StaticBody2D.new()

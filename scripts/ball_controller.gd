@@ -14,8 +14,8 @@ var preview_ball = null
 var is_launching: bool = false
 var last_ball_x_position: float = -1  # Store last ball's x position
 var launch_position: Vector2  # Renamed from initial_position to be clearer
-@onready var launch_area_visual = ColorRect.new()
-var can_launch = true 
+#@onready var launch_area_visual = ColorRect.new()
+#var can_launch = true 
 
 func _ready():
 	# Set initial launch position only for the first time

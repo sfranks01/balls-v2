@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://v6k8mkeqkx0l"]
+[gd_scene load_steps=10 format=3 uid="uid://v6k8mkeqkx0l"]
 
 [ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_t2a51"]
 [ext_resource type="Script" path="res://scripts/stats_manager.gd" id="2_d0667"]
 [ext_resource type="Script" path="res://scripts/wall_controller.gd" id="3_4o5do"]
 [ext_resource type="Script" path="res://scripts/ball_controller.gd" id="4_7qlna"]
-[ext_resource type="Script" path="res://scenes/launch_zone.gd" id="5_71lpv"]
 [ext_resource type="Script" path="res://scripts/aim_line.gd" id="5_t2q7q"]
 [ext_resource type="Script" path="res://scripts/brick_controller.gd" id="6_vktwl"]
 [ext_resource type="PackedScene" uid="uid://di6xlxce8cmku" path="res://scenes/brick.tscn" id="7_dcqjs"]
@@ -15,7 +14,7 @@
 script = ExtResource("1_t2a51")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(200, 423)
+position = Vector2(195, 424)
 
 [node name="StatsManager" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -31,9 +30,6 @@ script = ExtResource("3_4o5do")
 
 [node name="BallController" type="Node2D" parent="."]
 script = ExtResource("4_7qlna")
-
-[node name="LaunchZone" type="Area2D" parent="BallController"]
-script = ExtResource("5_71lpv")
 
 [node name="AimLine" type="Line2D" parent="."]
 width = 3.0

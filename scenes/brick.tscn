@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://di6xlxce8cmku"]
+[gd_scene load_steps=7 format=3 uid="uid://di6xlxce8cmku"]
 
 [ext_resource type="Script" path="res://scripts/brick.gd" id="1_ja63i"]
 [ext_resource type="Texture2D" uid="uid://baxmxqb3h7au" path="res://assets/bricks/Block Blue.png" id="2_wvu3y"]
-[ext_resource type="AudioStream" uid="uid://c4v4x7odo7v3e" path="res://assets/sounds/explosion.wav" id="3_fone4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q4o5"]
 size = Vector2(54, 50)
@@ -161,8 +160,7 @@ justification_flags = 131
 max_lines_visible = 1
 
 [node name="BrickDestroyedSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_fone4")
-volume_db = -11.642
+volume_db = 0.776
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

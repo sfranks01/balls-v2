@@ -5,6 +5,7 @@ extends Node2D
 @onready var ball_controller = $BallController
 @onready var aim_line = $AimLine
 @onready var brick_controller: Node2D = $BrickController
+@onready var music_player = $BackgroundChord
 
 var is_aiming = false
 var aim_start_position = Vector2.ZERO
@@ -14,6 +15,8 @@ func _ready():
 	stats_manager.start_game()
 	ball_controller.connect("all_balls_lost", _on_all_balls_lost)
 	#$BrickController/AddBallPickup.ball_added.connect($StatsManager.on_ball_added)
+	# Start the music if you want it to play immediately
+	#start_music()
 
 # Input handling for aiming and launching
 func _input(event):
@@ -35,6 +38,13 @@ func _process(_delta):
 		# Update aim direction
 		aim_direction = (aim_start_position - get_viewport().get_mouse_position()).normalized()
 		aim_line.update_aim(ball_controller.preview_ball.position, aim_direction)
+	
+	## Background music, commented out for now
+	#if !music_player.playing:
+		#music_player.play()
+		## Connect the signal only if it's not already connected
+		#if !music_player.finished.is_connected(_on_music_finished):
+			#music_player.finished.connect(_on_music_finished)
 
 func _on_all_balls_lost():
 	stats_manager.advance_level()
@@ -53,3 +63,21 @@ func _on_brick_controller_game_over() -> void:
 		var tree = get_tree()
 		if tree:
 			tree.reload_current_scene()
+			
+			
+#func start_music():
+	#if !music_player.playing:
+		#music_player.play()
+		## Connect the signal only if it's not already connected
+		#if !music_player.finished.is_connected(_on_music_finished):
+			#music_player.finished.connect(_on_music_finished)
+#
+#func _on_music_finished():
+	## This will restart the music as soon as it finishes
+	#music_player.play()
+#
+#func stop_music():
+	#music_player.stop()
+	## Optionally disconnect the signal if you want to fully stop looping
+	#if music_player.finished.is_connected(_on_music_finished):
+		#music_player.finished.disconnect(_on_music_finished)
